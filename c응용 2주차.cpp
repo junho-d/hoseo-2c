@@ -1,62 +1,62 @@
 #include <stdio.h>
 
 int main() {
-    int N; // »óÇ° Á¾·ù ¼ö
-    int stock[101]; // ÀÔ°í ¼ö·®
-    int sold[101];  // ÆÇ¸Å ¼ö·®
-    int remain[101]; // Àç°í ¼ö·®
+    int N; // ìƒí’ˆ ì¢…ë¥˜ ìˆ˜
+    int stock[101]; // ì…ê³  ìˆ˜ëŸ‰
+    int sold[101];  // íŒë§¤ ìˆ˜ëŸ‰
+    int remain[101]; // ì¬ê³  ìˆ˜ëŸ‰
     int id;
 
-    // »óÇ° °³¼ö ÀÔ·Â
+    // ìƒí’ˆ ê°œìˆ˜ ì…ë ¥
     scanf_s("%d", &N);
 
-    // ÀÔ°í ¼ö·® ÀÔ·Â
+    // ì…ê³  ìˆ˜ëŸ‰ ì…ë ¥
     for (int i = 1; i <= N; i++) {
         scanf_s("%d", &stock[i]);
     }
 
-    // ÆÇ¸Å ¼ö·® ÀÔ·Â
+    // íŒë§¤ ìˆ˜ëŸ‰ ì…ë ¥
     for (int i = 1; i <= N; i++) {
         scanf_s("%d", &sold[i]);
     }
 
-    // Àç°í ¼ö·® °è»ê
+    // ì¬ê³  ìˆ˜ëŸ‰ ê³„ì‚°
     for (int i = 1; i <= N; i++) {
         remain[i] = stock[i] - sold[i];
     }
 
-    // Àç°í °æ°í ºÎÁ· (Àç°í°¡ 2°³ ¹Ì¸¸ÀÎ »óÇ°À» È®ÀÎ)
+    // ì¬ê³  ê²½ê³  ë¶€ì¡±
     for (int i = 1; i <= N; i++) {
         if (remain[i] < 2) {
-            printf("»óÇ° ID %d: ¼ö·®ÀÌ 2°³ ¹Ì¸¸À¸·Î ³²¾Æ Ã¤¿ö¾ß ÇÕ´Ï´Ù.\n", i);
+            printf("ìƒí’ˆ ID %d: ìˆ˜ëŸ‰ì´ 2ê°œ ë¯¸ë§Œìœ¼ë¡œ ë‚¨ì•„ ì±„ì›Œì•¼ í•©ë‹ˆë‹¤.\n", i);
         }
     }
 
-    // Á¶È¸ÇÒ ID ÀÔ·Â
+    // ì¡°íšŒí•  ID ì…ë ¥
     scanf_s("%d", &id);
 
-    // ÇØ´ç ID »óÇ° Àç°í Ãâ·Â
+    // í•´ë‹¹ ID ìƒí’ˆ ì¬ê³  ì¶œë ¥
     printf("%d\n", remain[id]);
 
-    // ¸ğµç »óÇ° Àç°í Ãâ·Â
+    // ëª¨ë“  ìƒí’ˆ ì¬ê³  ì¶œë ¥
     for (int i = 1; i <= N; i++) {
         printf("%d ", remain[i]);
     }
     printf("\n");
 
-    // ÀüÃ¼ ÆÇ¸ÅÀ² °è»ê 
+    // ì „ì²´ íŒë§¤ìœ¨ ê³„ì‚° 
     for (int i = 1; i <= N; i++) {
         if (stock[i] > 0) {
             float sales_rate = (float)sold[i] / stock[i] * 100;
-            printf("»óÇ° ID %dÀÇ ÆÇ¸ÅÀ²: %.2f%%\n", i, sales_rate);
+            printf("ìƒí’ˆ ID %dì˜ íŒë§¤ìœ¨: %.2f%%\n", i, sales_rate);
         }
         else {
-            printf("»óÇ° ID %dÀÇ ÆÇ¸ÅÀ²: 0.00%% (ÀÔ°í·®ÀÌ 0)\n", i);
+            printf("ìƒí’ˆ ID %dì˜ íŒë§¤ìœ¨: 0.00%% (ì…ê³ ëŸ‰ì´ 0)\n", i);
         }
     }
 
-    // ÃÖ´ë ÆÇ¸Å·® ¹× ÃÖ¼Ò ÆÇ¸Å·® »óÇ° Ãâ·Â
-    int max_sales = 0, min_sales = 1000000000; // ÃæºĞÈ÷ Å« °ªÀ¸·Î ÃÊ±âÈ­
+    // ìµœëŒ€ íŒë§¤ëŸ‰ ë° ìµœì†Œ íŒë§¤ëŸ‰ ìƒí’ˆ ì¶œë ¥
+    int max_sales = 0, min_sales = 1000000000; // ì¶©ë¶„íˆ í° ê°’ìœ¼ë¡œ ì´ˆê¸°í™”
     int max_sales_id = 0, min_sales_id = 0;
 
     for (int i = 1; i <= N; i++) {
@@ -70,8 +70,9 @@ int main() {
         }
     }
 
-    printf("ÃÖ´ë ÆÇ¸Å·® »óÇ° ID: %d, ÆÇ¸Å·®: %d\n", max_sales_id, max_sales);
-    printf("ÃÖ¼Ò ÆÇ¸Å·® »óÇ° ID: %d, ÆÇ¸Å·®: %d\n", min_sales_id, min_sales);
+    printf("ìµœëŒ€ íŒë§¤ëŸ‰ ìƒí’ˆ ID: %d, íŒë§¤ëŸ‰: %d\n", max_sales_id, max_sales);
+    printf("ìµœì†Œ íŒë§¤ëŸ‰ ìƒí’ˆ ID: %d, íŒë§¤ëŸ‰: %d\n", min_sales_id, min_sales);
 
     return 0;
 }
+
